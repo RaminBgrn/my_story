@@ -36,11 +36,18 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/bg.png
-  AssetGenImage get bg => const AssetGenImage('assets/images/bg.png');
+  /// File path: assets/images/bg.jpeg
+  AssetGenImage get bg => const AssetGenImage('assets/images/bg.jpeg');
+
+  /// File path: assets/images/bg_three.jpeg
+  AssetGenImage get bgThree =>
+      const AssetGenImage('assets/images/bg_three.jpeg');
+
+  /// File path: assets/images/bg_two.jpeg
+  AssetGenImage get bgTwo => const AssetGenImage('assets/images/bg_two.jpeg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [bg];
+  List<AssetGenImage> get values => [bg, bgThree, bgTwo];
 }
 
 class Assets {

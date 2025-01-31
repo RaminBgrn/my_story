@@ -1,6 +1,7 @@
+import 'package:fleather/fleather.dart';
 import 'package:flutter/material.dart';
-import 'package:my_story/constants/material_color.dart';
-import 'package:my_story/gen/fonts.gen.dart';
+import 'package:my_story/feature/story/view/background_widget.dart';
+import 'package:my_story/feature/story/view/text_box_widget.dart';
 
 class StoryScreen extends StatelessWidget {
   const StoryScreen({super.key});
@@ -8,14 +9,15 @@ class StoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'Story Screen',
-          style: TextStyle(
-            fontFamily: FontFamily.mikhak,
-            color: myGrey[200],
-            fontSize: 18,
-          ),
+      body: SizedBox(
+        width: MediaQuery.sizeOf(context).width,
+        height: MediaQuery.sizeOf(context).height,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            BackgroundWidget(),
+            TextBoxWidget(),
+          ],
         ),
       ),
     );
