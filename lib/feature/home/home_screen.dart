@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_story/constants/material_color.dart';
 import 'package:my_story/feature/home/view/home_button.dart';
+import 'package:my_story/feature/home/viewModel/home_view_model.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeViewModel> {
   const HomeScreen({super.key});
 
   @override
@@ -19,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           HomeButton(
             buttonColor: myOrange[200]!,
             buttonTitle: 'Story',
-            onTap: () {},
+            onTap: () => controller.moveToStoryPage(),
           ),
         ],
       ),
