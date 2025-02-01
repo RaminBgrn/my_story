@@ -1,7 +1,7 @@
-import 'package:fleather/fleather.dart';
 import 'package:flutter/material.dart';
 import 'package:my_story/feature/story/view/background_widget.dart';
 import 'package:my_story/feature/story/view/text_box_widget.dart';
+import 'package:my_story/feature/story/view/text_tool_box.dart';
 
 class StoryScreen extends StatelessWidget {
   const StoryScreen({super.key});
@@ -16,6 +16,13 @@ class StoryScreen extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             BackgroundWidget(),
+            Positioned.fill(
+              top: 40,
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: TextToolBox(),
+              ),
+            ),
             TextBoxWidget(),
           ],
         ),
