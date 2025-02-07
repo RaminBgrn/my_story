@@ -1,9 +1,8 @@
-import 'package:fleather/fleather.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_story/constants/material_color.dart';
-import 'package:my_story/feature/story/view/i_vertical_divider.dart';
 import 'package:my_story/feature/story/view/tool_box_button.dart';
+
 import 'package:my_story/feature/story/viewModel/story_view_model.dart';
 import 'package:my_story/gen/assets.gen.dart';
 
@@ -20,49 +19,75 @@ class TextToolBox extends GetView<StoryViewModel> {
         borderRadius: BorderRadius.circular(18),
         color: myGrey[800],
       ),
-      // child: FleatherToolbar.basic(controller: controller.getFleatherController),
-      child: FleatherToolbar(
+      child: PageView(
         children: [
-          ToolBoxButton(
-            iconPath: Assets.svgs.bold.path,
-            onTap: () {
-              controller.getFleatherController.formatSelection(ParchmentAttribute.bold);
-            },
+          SizedBox(
+            width: MediaQuery.sizeOf(context).width,
+            height: 50,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ToolBoxButton(
+                        iconPath: Assets.svgs.bold.path,
+                        onTap: controller.makeBold,
+                      ),
+                      ToolBoxButton(
+                        iconPath: Assets.svgs.textItalic.path,
+                        onTap: controller.makeItalic,
+                      ),
+                      ToolBoxButton(
+                        iconPath: Assets.svgs.textUnderline.path,
+                        onTap: controller.makeUnderLine,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ToolBoxButton(
+                        iconPath: Assets.svgs.alignLeft.path,
+                        onTap: controller.changeDirectionRtl,
+                      ),
+                      ToolBoxButton(
+                        iconPath: Assets.svgs.alignCenter.path,
+                        onTap: controller.changeDirectionCenter,
+                      ),
+                      ToolBoxButton(
+                        iconPath: Assets.svgs.alignRight.path,
+                        onTap: controller.changeDirectionLtr,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-          ToolBoxButton(
-            iconPath: Assets.svgs.textItalic.path,
-            onTap: () {
-              controller.getFleatherController.formatSelection(ParchmentAttribute.italic);
-            },
+          SizedBox(
+            child: ListView.builder(
+              itemCount: controller.getTextColors.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, index) {
+                return GestureDetector(
+                  onTap: () {
+                    controller.changeColor(controller.getTextColors[index]);
+                  },
+                  child: Container(
+                    width: 46,
+                    margin: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: controller.getTextColors[index],
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
-          ToolBoxButton(
-            iconPath: Assets.svgs.textUnderline.path,
-            onTap: () {
-              controller.getFleatherController.formatSelection(ParchmentAttribute.underline);
-            },
-          ),
-          IVerticalDivider(),
-          ToolBoxButton(
-            iconPath: Assets.svgs.alignRight.path,
-            onTap: () {
-              controller.getFleatherController.formatSelection(ParchmentAttribute.right);
-            },
-          ),
-          ToolBoxButton(
-            iconPath: Assets.svgs.alignCenter.path,
-            onTap: () {
-              controller.getFleatherController.formatSelection(ParchmentAttribute.center);
-            },
-          ),
-          ToolBoxButton(
-            iconPath: Assets.svgs.alignLeft.path,
-            onTap: () {
-              controller.getFleatherController.formatSelection(ParchmentAttribute.left);
-            },
-          ),
-          IVerticalDivider(),
-          Assets.svgs.colorPicker.svg(
-              width: 40, height: 40, colorFilter: ColorFilter.mode(myGrey[400]!, BlendMode.srcIn))
         ],
       ),
     );

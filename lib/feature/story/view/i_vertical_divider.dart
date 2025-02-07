@@ -11,11 +11,16 @@ class IVerticalDivider extends StatelessWidget {
       height: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
-        myGrey[900]!,
-        myGrey[400]!,
-        myGrey[900]!,
-      ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+        gradient: LinearGradient(
+          colors: [
+            myGrey[900]!,
+            myGrey[500]!,
+            myGrey[900]!,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
     );
   }
 }

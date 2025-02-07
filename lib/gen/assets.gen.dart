@@ -21,18 +21,35 @@ class $AssetsFontsGen {
   /// File path: assets/fonts/Mikhak-DS1-FD-Bold.ttf
   String get mikhakDS1FDBold => 'assets/fonts/Mikhak-DS1-FD-Bold.ttf';
 
+  /// File path: assets/fonts/Mikhak-DS1-FD-ExtraBold.ttf
+  String get mikhakDS1FDExtraBold => 'assets/fonts/Mikhak-DS1-FD-ExtraBold.ttf';
+
+  /// File path: assets/fonts/Mikhak-DS1-FD-ExtraLight.ttf
+  String get mikhakDS1FDExtraLight =>
+      'assets/fonts/Mikhak-DS1-FD-ExtraLight.ttf';
+
+  /// File path: assets/fonts/Mikhak-DS1-FD-Light.ttf
+  String get mikhakDS1FDLight => 'assets/fonts/Mikhak-DS1-FD-Light.ttf';
+
   /// File path: assets/fonts/Mikhak-DS1-FD-Medium.ttf
   String get mikhakDS1FDMedium => 'assets/fonts/Mikhak-DS1-FD-Medium.ttf';
 
   /// File path: assets/fonts/Mikhak-DS1-FD-Regular.ttf
   String get mikhakDS1FDRegular => 'assets/fonts/Mikhak-DS1-FD-Regular.ttf';
 
+  /// File path: assets/fonts/Mikhak-DS1-FD-SemiBold.ttf
+  String get mikhakDS1FDSemiBold => 'assets/fonts/Mikhak-DS1-FD-SemiBold.ttf';
+
   /// List of all assets
   List<String> get values => [
         mikhakDS1FDBlack,
         mikhakDS1FDBold,
+        mikhakDS1FDExtraBold,
+        mikhakDS1FDExtraLight,
+        mikhakDS1FDLight,
         mikhakDS1FDMedium,
-        mikhakDS1FDRegular
+        mikhakDS1FDRegular,
+        mikhakDS1FDSemiBold
       ];
 }
 
@@ -74,6 +91,12 @@ class $AssetsSvgsGen {
   SvgGenImage get colorPicker =>
       const SvgGenImage('assets/svgs/color_picker.svg');
 
+  /// File path: assets/svgs/menu.svg
+  SvgGenImage get menu => const SvgGenImage('assets/svgs/menu.svg');
+
+  /// File path: assets/svgs/take_photo.svg
+  SvgGenImage get takePhoto => const SvgGenImage('assets/svgs/take_photo.svg');
+
   /// File path: assets/svgs/text_italic.svg
   SvgGenImage get textItalic =>
       const SvgGenImage('assets/svgs/text_italic.svg');
@@ -89,6 +112,8 @@ class $AssetsSvgsGen {
         alignRight,
         bold,
         colorPicker,
+        menu,
+        takePhoto,
         textItalic,
         textUnderline
       ];

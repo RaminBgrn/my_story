@@ -1,11 +1,14 @@
 import 'dart:ui';
 
-import 'package:fleather/fleather.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_story/constants/material_color.dart';
+import 'package:my_story/core/editor_text_config.dart';
+import 'package:my_story/feature/story/viewModel/story_view_model.dart';
 
-class TextBoxWidget extends StatelessWidget {
+class TextBoxWidget extends GetView<StoryViewModel> {
   const TextBoxWidget({super.key});
 
   @override
@@ -21,7 +24,7 @@ class TextBoxWidget extends StatelessWidget {
             height: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
-              color: myGrey[600]!.withValues(alpha: 0.5),
+              color: myGrey[900]!.withValues(alpha: 0.5),
             ),
             child: Column(
               children: [
@@ -73,15 +76,19 @@ class TextBoxWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
-                      border: Border.all(
-                        width: 1,
-                        color: myOrange[500]!.withValues(
-                          alpha: 0.5,
-                        ),
+                      color: myGrey[900]!.withValues(
+                        alpha: 0.8,
                       ),
                     ),
-                    child: FleatherField(
-                      controller: FleatherController(),
+                    child: QuillEditor.basic(
+                      controller: controller.getQuillController,
+                      configurations: QuillEditorConfigurations(
+                        customStyles: DefaultStyles(
+                          paragraph:
+                              EditorTextConfig.setTextStyle(16, FontWeight.normal).blockStyle,
+                          bold: EditorTextConfig.setTextStyle(18, FontWeight.bold).textStyle,
+                        ),
+                      ),
                     ),
                   ),
                 ),
