@@ -1,11 +1,19 @@
+import 'dart:io';
+import 'dart:math';
+
+import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:get/get.dart';
 import 'package:my_story/constants/material_color.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 class StoryViewModel extends GetxController {
   late QuillController _controller;
   QuillController get getQuillController => _controller;
+
+  late WidgetsToImageController _widgetsToImageController;
+  WidgetsToImageController get getWidgetsToImageController => _widgetsToImageController;
 
   bool _toolBarFlag = true;
   bool get isToolBarVisible => _toolBarFlag;
@@ -25,6 +33,7 @@ class StoryViewModel extends GetxController {
   void onInit() {
     _controller = QuillController.basic();
     _controller.formatSelection(Attribute.rtl);
+    _widgetsToImageController = WidgetsToImageController();
     super.onInit();
   }
 
@@ -73,6 +82,17 @@ class StoryViewModel extends GetxController {
 
   void changeToolBarVisibility() {
     _toolBarFlag = !_toolBarFlag;
+    Get.focusScope!.unfocus();
     update();
+  }
+
+  void takePhoto() async {
+    final data = await _widgetsToImageController.capture();
+    final fileName = Random().nextInt(1000);
+    final path =
+        await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_PICTURES);
+    if (data == null) return;
+    File takenImage = File("$path/$fileName.png");
+    takenImage.writeAsBytesSync(data);
   }
 }

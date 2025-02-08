@@ -42,6 +42,8 @@ dependencies:
   flutter_svg: ^2.0.17
   color_hex: ^0.0.1
   flutter_quill: ^10.8.5
+  widgets_to_image: ^1.0.0
+  external_path: ^2.0.1
 
 dev_dependencies:
   flutter_test:

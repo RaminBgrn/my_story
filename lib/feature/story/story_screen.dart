@@ -6,6 +6,7 @@ import 'package:my_story/feature/story/view/text_box_widget.dart';
 import 'package:my_story/feature/story/view/text_tool_box.dart';
 import 'package:my_story/feature/story/viewModel/story_view_model.dart';
 import 'package:my_story/gen/assets.gen.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 class StoryScreen extends GetView<StoryViewModel> {
   const StoryScreen({super.key});
@@ -13,26 +14,29 @@ class StoryScreen extends GetView<StoryViewModel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
-        height: MediaQuery.sizeOf(context).height,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            BackgroundWidget(),
-            GetBuilder<StoryViewModel>(builder: (ctl) {
-              return ctl.isToolBarVisible
-                  ? Positioned.fill(
-                      top: 40,
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: TextToolBox(),
-                      ),
-                    )
-                  : SizedBox();
-            }),
-            TextBoxWidget(),
-          ],
+      body: WidgetsToImage(
+        controller: controller.getWidgetsToImageController,
+        child: SizedBox(
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).height,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              BackgroundWidget(),
+              GetBuilder<StoryViewModel>(builder: (ctl) {
+                return ctl.isToolBarVisible
+                    ? Positioned.fill(
+                        top: 40,
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: TextToolBox(),
+                        ),
+                      )
+                    : SizedBox();
+              }),
+              TextBoxWidget(),
+            ],
+          ),
         ),
       ),
       floatingActionButton: Row(
@@ -51,7 +55,7 @@ class StoryScreen extends GetView<StoryViewModel> {
                 ),
               ),
               onPressed: () {
-                controller.changeColor(myRed[500]!);
+                controller.takePhoto();
               }),
           FloatingActionButton(
               heroTag: "btn2",

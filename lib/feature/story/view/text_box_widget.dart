@@ -35,7 +35,11 @@ class TextBoxWidget extends GetView<StoryViewModel> {
                     children: [
                       Text(
                         'RaminBGrn',
-                        style: GoogleFonts.caveat(color: myGrey[100], fontSize: 16),
+                        style: GoogleFonts.caveat(
+                          color: myGrey[100],
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Row(
                         spacing: 4,
@@ -73,7 +77,7 @@ class TextBoxWidget extends GetView<StoryViewModel> {
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 4, left: 4, right: 4),
                     alignment: Alignment.topCenter,
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 18),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
                       color: myGrey[900]!.withValues(
@@ -84,9 +88,8 @@ class TextBoxWidget extends GetView<StoryViewModel> {
                       controller: controller.getQuillController,
                       configurations: QuillEditorConfigurations(
                         customStyles: DefaultStyles(
-                          paragraph:
-                              EditorTextConfig.setTextStyle(16, FontWeight.normal).blockStyle,
-                          bold: EditorTextConfig.setTextStyle(18, FontWeight.bold).textStyle,
+                          paragraph: EditorTextConfig.setTextStyle(16, FontWeight.w600).blockStyle,
+                          bold: EditorTextConfig.setTextStyle(20, FontWeight.bold).textStyle,
                         ),
                       ),
                     ),

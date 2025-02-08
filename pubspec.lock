@@ -254,6 +254,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.7"
+  external_path:
+    dependency: "direct main"
+    description:
+      name: external_path
+      sha256: "272d067c719c2421ff40c202ac32ccddcb689f3b0c839ec370942666dae589db"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -1071,6 +1079,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.2"
+  widgets_to_image:
+    dependency: "direct main"
+    description:
+      name: widgets_to_image
+      sha256: "9a251b95d3a9f10d72420dde9b7e3b0da5eddd47fb19cad066bc68c60b0d1dfb"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   win32:
     dependency: transitive
     description:
